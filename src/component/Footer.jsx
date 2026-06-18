@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { MdAddLocation, MdEmail, MdPhone } from 'react-icons/md';
 
 const Footer = () => {
     return (
@@ -17,9 +18,21 @@ const Footer = () => {
                             className="object-contain"
                         />
                     </Link>
-                    <Link href="/" className="link link-hover">123 Anywhere St., Any City 12345</Link>
-                    <Link href="/" className="link link-hover">123-456-7890</Link>
-                    <Link href="/" className="link link-hover">hellocallcenter@gmail.com</Link>
+                    <Link href="/" className="link link-hover gap-4 flex items-center">
+                        <div className="w-6 h-6 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
+                            <MdAddLocation className="text-white w-4 h-4" />
+                        </div>
+                        123 Anywhere St., Any City 12345</Link>
+                    <Link href="/" className="link link-hover gap-4 flex items-center">
+                        <div className="w-6 h-6 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
+                            <MdPhone className="text-white w-4 h-4" />
+                        </div>
+                        123-456-7890</Link>
+                    <Link href="/" className="link link-hover gap-4 flex items-center">
+                        <div className="w-6 h-6 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
+                            <MdEmail className="text-white w-4 h-4" />
+                        </div>
+                        hellocallcenter@gmail.com</Link>
                 </nav>
 
                 <nav className="flex flex-col space-y-3 items-center sm:items-start text-center sm:text-left">
@@ -55,7 +68,7 @@ const Footer = () => {
                                 </label>
                                 <div className="validator-hint hidden absolute left-0 -bottom-5 text-xs text-error">Enter valid email address</div>
                             </div>
-                            <button className="btn btn-neutral join-item">Join</button>
+                            <button className="btn bg-[oklch(0.6204_0.195_253.83)] text-white join-item">Join</button>
                         </div>
                     </fieldset>
                 </form>

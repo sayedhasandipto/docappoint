@@ -59,7 +59,7 @@ const Value = () => {
                             integrity and honesty. We are
                             transparent in our communication and
                             decision-making processes, and we
-                            always put our patient's interests first &
+                            always put our patient&apos;s interests first &
                             provide best solution.
                         </Card.Description>
                     </Card.Header>
