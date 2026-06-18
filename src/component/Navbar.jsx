@@ -1,3 +1,4 @@
+import { Bars } from '@gravity-ui/icons';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,9 +10,10 @@ const Navbar = () => {
             <div className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                        </div>
+                        <Button variant="ghost" className="btn btn-ghost lg:hidden">
+                            <Bars className="w-5 h-5" />
+                        </Button>
+
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content   rounded-box z-1 mt-3 w-52 p-2">
@@ -63,7 +65,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="navbar-end gap-4">
+                <div className="navbar-end gap-4 max-sm:gap-2">
                     <Link href="/login"><Button variant="outline">Login</Button></Link>
                     <Link href="/register"><Button>Register</Button></Link>
                 </div>

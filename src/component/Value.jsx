@@ -7,7 +7,7 @@ import { TiPointOfInterestOutline } from "react-icons/ti";
 
 const Value = () => {
     return (
-        <div className="container mx-auto my-20">
+        <div className="container mx-auto my-20 max-sm:p-4">
             <h1 className="text-5xl text-[#274760] font-bold text-center mb-25">Our Values</h1>
             <div className="flex flex-wrap items-center justify-center gap-10" >
                 <Card className="w-100 text-center p-6">
