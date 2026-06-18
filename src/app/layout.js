@@ -24,9 +24,8 @@ export default function RootLayout({ children }) {
       data-theme="light"
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning={true}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning={true}>
         <Navbar />
         {children}
         <Footer />
