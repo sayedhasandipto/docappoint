@@ -1,10 +1,25 @@
+"use client"
+
+import { authClient } from '@/lib/auth-client';
 import { Bars } from '@gravity-ui/icons';
-import { Button } from '@heroui/react';
+import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
+
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
+
+    // console.log(session);
+    const user = session?.user
+    // console.log(user);
+
     return (
         <div className="container mx-auto">
             <div className="navbar">
@@ -65,10 +80,33 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="navbar-end gap-4 max-sm:gap-2">
-                    <Link href="/login"><Button variant="outline">Login</Button></Link>
-                    <Link href="/signup"><Button>Register</Button></Link>
-                </div>
+                <ul className="navbar-end gap-4 max-sm:gap-2">
+                    {user ?
+                        <>
+                            <li>
+                                <Link href={"/profile"} >
+                                    <Avatar>
+                                        <Avatar.Image alt="John Doe" src={user?.image} />
+                                        <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                                    </Avatar>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={"/profile"}>
+                                    <Button variant="danger">Logout</Button>
+                                </Link>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li>
+                                <Link href="/login"><Button variant="outline">Login</Button></Link>
+                            </li>
+                            <li>
+                                <Link href="/signup"><Button>Register</Button></Link>
+                            </li>
+                        </>}
+                </ul>
             </div>
         </div >
     );

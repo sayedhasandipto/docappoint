@@ -23,12 +23,11 @@ const SignUpPage = () => {
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
 
-        // Better Auth এর সঠিক মেথড হলো signUp.email
         const { data, error } = await authClient.signUp.email({
             email: user.email,
-            password: user.password, // এটি অবশ্যই থাকতে হবে
+            password: user.password,
             name: user.name,
-            image: user.image, // ফিল্ডের নাম ঠিক করুন
+            image: user.image,
         });
 
         if (error) {
@@ -55,7 +54,6 @@ const SignUpPage = () => {
                             <Input placeholder="john@example.com" />
                             <FieldError />
                         </TextField>
-                        {/* পাসওয়ার্ড ফিল্ডটি জরুরি */}
                         <TextField isRequired name="password" type="password">
                             <Label>Password</Label>
                             <Input placeholder="********" />
