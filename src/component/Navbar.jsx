@@ -92,8 +92,13 @@ const Navbar = () => {
                             <li>
                                 <Link href={"/profile"} >
                                     <Avatar>
-                                        <Avatar.Image alt="John Doe" src={user?.image} />
-                                        <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                                        <Avatar.Image
+                                            referrerPolicy="no-referrer"
+                                            alt="John Doe" src={user?.image} />
+
+                                        <Avatar.Fallback>
+                                            {user.name.charAt(0)}
+                                        </Avatar.Fallback>
                                     </Avatar>
                                 </Link>
                             </li>

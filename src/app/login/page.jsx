@@ -1,11 +1,18 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
+import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
     const router = useRouter();
+
+    const handeGoolgeSign = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -43,6 +50,11 @@ const LoginPage = () => {
                         <Check /> Login
                     </Button>
                 </div>
+                <Separator className="my-4" />
+                <Button onClick={handeGoolgeSign} className="w-full rounded-none" variant="secondary">
+                    <Icon icon="devicon:google" />
+                    Sign in with Google
+                </Button>
             </Form>
         </div>
     );
