@@ -67,7 +67,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-4 max-sm:gap-2">
                     <Link href="/login"><Button variant="outline">Login</Button></Link>
-                    <Link href="/register"><Button>Register</Button></Link>
+                    <Link href="/signup"><Button>Register</Button></Link>
                 </div>
             </div>
         </div >
