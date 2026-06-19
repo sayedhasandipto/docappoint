@@ -10,8 +10,10 @@ import {
     Form,
     Input,
     Label,
+    Separator,
     TextField,
 } from "@heroui/react";
+import { Icon } from "@iconify/react";
 import { router } from "next/client";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -37,6 +39,12 @@ const SignUpPage = () => {
         }
     };
 
+    const handeGoolgeSign = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
     return (
         <div className="container mx-auto my-20 max-sm:p-4">
             <Form className="w-full max-w-96 mx-auto" onSubmit={onSubmit}>
@@ -46,33 +54,39 @@ const SignUpPage = () => {
                     <FieldGroup>
                         <TextField isRequired name="name">
                             <Label>Name</Label>
-                            <Input placeholder="John Doe" />
+                            <Input placeholder="John Doe" className={'w-full'} />
                             <FieldError />
                         </TextField>
                         <TextField isRequired name="email" type="email">
                             <Label>Email</Label>
-                            <Input placeholder="john@example.com" />
+                            <Input placeholder="john@example.com" className={'w-full'} />
                             <FieldError />
                         </TextField>
                         <TextField isRequired name="password" type="password">
                             <Label>Password</Label>
-                            <Input placeholder="********" />
+                            <Input placeholder="********" className={'w-full'} />
                             <FieldError />
                         </TextField>
                         <TextField name="image">
                             <Label>Image URL</Label>
-                            <Input placeholder="https://example.com/image.jpg" />
+                            <Input placeholder="https://example.com/image.jpg" className={'w-full'} />
                             <FieldError />
                         </TextField>
                     </FieldGroup>
                     <Fieldset.Actions>
-                        <Button type="submit">
+                        <Button type="submit" className={"w-full rounded-none"}>
                             <FloppyDisk />
                             Create Account
                         </Button>
                     </Fieldset.Actions>
+                    <Separator className="my-4" />
+                    <Button onClick={handeGoolgeSign} className="w-full rounded-none" variant="secondary">
+                        <Icon icon="devicon:google" />
+                        Sign in with Google
+                    </Button>
                 </Fieldset>
             </Form>
+
         </div>
     );
 };

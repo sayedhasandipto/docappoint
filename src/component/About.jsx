@@ -22,7 +22,7 @@ const About = () => {
                 </div>
                 <div className="flex gap-4 justify-center">
                     <ArrowRight className="text-lg text-[#307BC4] font-bold w-11 h-11" />
-                    <div className="mt-2 w-md max-sm:w-[100%]">
+                    <div className="mt-2 w-md max-sm:w-full">
                         <h2 className="text-2xl leading-7 font-bold mb-4 text-[#274760]">ProHealth is a team of experienced
                             medical professionals</h2>
                         <p className="leading-7 text-[#274760a2]">

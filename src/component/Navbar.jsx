@@ -5,10 +5,12 @@ import { Bars } from '@gravity-ui/icons';
 import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const Navbar = () => {
 
+    const router = useRouter();
     const {
         data: session,
         isPending, //loading state
@@ -19,6 +21,10 @@ const Navbar = () => {
     // console.log(session);
     const user = session?.user
     // console.log(user);
+
+    const handelSignOut = async () => {
+        await authClient.signOut();
+    };
 
     return (
         <div className="container mx-auto">
@@ -92,8 +98,10 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/profile"}>
-                                    <Button variant="danger">Logout</Button>
+                                <Link href={"/"}>
+                                    <Button
+                                        onClick={handelSignOut}
+                                        variant="danger">Logout</Button>
                                 </Link>
                             </li>
                         </>
