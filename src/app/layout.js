@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "DocAppoint - Your Appointment Management Solution",
   description: `DocAppoint is a comprehensive appointment management solution designed to streamline scheduling and enhance patient care. Our platform offers an intuitive interface for both healthcare providers and patients, ensuring efficient appointment booking, reminders, and management. With DocAppoint, you can easily manage your appointments, reduce no-shows, and improve overall patient satisfaction.
 
@@ -73,6 +75,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );

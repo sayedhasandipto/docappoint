@@ -1,105 +1,82 @@
-import { Bulb, CircleDollar } from "@gravity-ui/icons";
-import { Card, Link } from "@heroui/react";
-import { FaHandHoldingHeart } from "react-icons/fa";
-import { FaHandsHoldingChild } from "react-icons/fa6";
-import { RiTeamFill } from "react-icons/ri";
-import { TiPointOfInterestOutline } from "react-icons/ti";
+import { Heart, Lightbulb, Shield, HandHeart, Users } from "lucide-react";
+
+const values = [
+    {
+        Icon: Heart,
+        title: "Compassion",
+        description: "We create a welcoming and supportive environment that puts our patients at ease during their care journey.",
+        gradient: "from-rose-500 to-pink-600",
+        bg: "bg-rose-50",
+    },
+    {
+        Icon: Lightbulb,
+        title: "Excellence",
+        description: "We continuously improve our skills and resources to deliver the highest quality care possible.",
+        gradient: "from-amber-500 to-orange-600",
+        bg: "bg-amber-50",
+    },
+    {
+        Icon: Shield,
+        title: "Integrity",
+        description: "We practice medicine with transparency and honesty, always putting our patients' interests first.",
+        gradient: "from-emerald-500 to-teal-600",
+        bg: "bg-emerald-50",
+    },
+    {
+        Icon: HandHeart,
+        title: "Respect",
+        description: "We treat all individuals with dignity regardless of their background, beliefs, or circumstances.",
+        gradient: "from-blue-500 to-indigo-600",
+        bg: "bg-blue-50",
+    },
+    {
+        Icon: Users,
+        title: "Teamwork",
+        description: "We work collaboratively with healthcare professionals to provide comprehensive care to patients.",
+        gradient: "from-violet-500 to-purple-600",
+        bg: "bg-violet-50",
+    }
+];
 
 const Value = () => {
     return (
-        <div className="container mx-auto my-20 max-sm:p-4">
-            <h1 className="text-5xl text-[#274760] font-bold text-center mb-25">Our Values</h1>
-            <div className="flex flex-wrap items-center justify-center gap-10" >
-                <Card className="w-100 text-center p-6">
-                    <Card.Header>
-                        <Card.Title className="flex items-center text-[#274760] gap-2 mx-auto text-3xl mb-6 font-bold">
-                            <div className="w-10 h-10 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
-                                <FaHandsHoldingChild className="text-white w-5 h-5" />
+        <section className="py-20 px-4 w-full bg-gray-50/50">
+            <div className="max-w-7xl mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-14">
+                    <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-sm font-semibold rounded-full mb-4 tracking-wide">
+                        WHY CHOOSE US
+                    </span>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                        Our Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Values</span>
+                    </h2>
+                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                        The principles that guide everything we do in healthcare.
+                    </p>
+                </div>
+
+                {/* Values Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {values.map((value, index) => (
+                        <div 
+                            key={index} 
+                            className={`group relative p-8 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-100/30 transition-all duration-500 hover:-translate-y-1 ${index === 4 ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}
+                        >
+                            {/* Icon */}
+                            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                                <value.Icon className="w-7 h-7 text-white" />
                             </div>
-                            Compassion
-                        </Card.Title>
-                        <Card.Description className="text-lg text-[#27476088] leading-7">
-                            We understand that seeking medical
-                            care can be a stressful and emotional
-                            experience, and we strive to create a
-                            welcoming and supportive environment
-                            that puts our patients at ease and every
-                            one.
-                        </Card.Description>
-                    </Card.Header>
-                </Card>
-                <Card className="w-100 text-center p-6">
-                    <Card.Header>
-                        <Card.Title className="flex items-center text-[#274760] gap-2 mx-auto text-3xl mb-6 font-bold">
-                            <div className="w-10 h-10 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
-                                <Bulb className="text-white w-5 h-5" />
-                            </div>
-                            Excellence
-                        </Card.Title>
-                        <Card.Description className="text-lg text-[#27476088] leading-7">
-                            We are committed to providing excellent
-                            medical care and services to our
-                            patients. We believe in continuously
-                            improving our skills, knowledge, and
-                            resources to ensure that we deliver the
-                            highest quality care possible.
-                        </Card.Description>
-                    </Card.Header>
-                </Card>
-                <Card className="w-100 text-center p-6">
-                    <Card.Header>
-                        <Card.Title className="flex items-center text-[#274760] gap-2 mx-auto text-3xl mb-6 font-bold">
-                            <div className="w-10 h-10 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
-                                <TiPointOfInterestOutline className="text-white w-5 h-5" />
-                            </div>
-                            Integrity
-                        </Card.Title>
-                        <Card.Description className="text-lg text-[#27476088] leading-7">
-                            We believe in practicing medicine with
-                            integrity and honesty. We are
-                            transparent in our communication and
-                            decision-making processes, and we
-                            always put our patient&apos;s interests first &
-                            provide best solution.
-                        </Card.Description>
-                    </Card.Header>
-                </Card>
-                <Card className="w-100 text-center p-6">
-                    <Card.Header>
-                        <Card.Title className="flex items-center text-[#274760] gap-2 mx-auto text-3xl mb-6 font-bold">
-                            <div className="w-10 h-10 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
-                                <FaHandHoldingHeart className="text-white w-5 h-5" />
-                            </div>
-                            Respect
-                        </Card.Title>
-                        <Card.Description className="text-lg text-[#27476088] leading-7">
-                            We treat all individuals with respect and
-                            dignity, regardless of their background,
-                            beliefs, or circumstances. We believe
-                            that every person deserves to be treated
-                            with compassion and kindness.
-                        </Card.Description>
-                    </Card.Header>
-                </Card>
-                <Card className="w-100 text-center p-6">
-                    <Card.Header>
-                        <Card.Title className="flex items-center text-[#274760] gap-2 mx-auto text-3xl mb-6 font-bold">
-                            <div className="w-10 h-10 rounded-full bg-[oklch(0.6204_0.195_253.83)] flex items-center justify-center gap-3 text-center">
-                                <RiTeamFill className="text-white w-5 h-5" />
-                            </div>
-                            Teamwork
-                        </Card.Title>
-                        <Card.Description className="text-lg text-[#27476088] leading-7">
-                            We believe in working collaboratively
-                            with our team membersvand other
-                            healthcare professionals to provide
-                            comprehensive and effective care to our
-                            patients.
-                        </Card.Description>
-                    </Card.Header>
-                </Card>
+
+                            <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                            <p className="text-gray-500 leading-relaxed">{value.description}</p>
+
+                            {/* Decorative corner */}
+                            <div className={`absolute top-0 right-0 w-24 h-24 ${value.bg} rounded-bl-[4rem] rounded-tr-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

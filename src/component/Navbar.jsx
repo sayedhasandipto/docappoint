@@ -1,127 +1,132 @@
 "use client"
 
 import { authClient } from '@/lib/auth-client';
-import { Bars } from '@gravity-ui/icons';
-import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
-
     const router = useRouter();
+    const [mobileOpen, setMobileOpen] = useState(false);
     const {
         data: session,
-        isPending, //loading state
-        error, //error object
-        refetch //refetch the session
+        isPending,
+        error,
+        refetch
     } = authClient.useSession()
 
-    // console.log(session);
     const user = session?.user
-    // console.log(user);
 
     const handelSignOut = async () => {
         await authClient.signOut();
     };
+
+    const navLinks = [
+        { href: "/", label: "Home" },
+        { href: "/appointment", label: "All Appointment" },
+        { href: "/dashboard", label: "Dashboard" },
+    ];
 
     return (
         <div className="container mx-auto">
             <div className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <Button variant="ghost" className="btn btn-ghost lg:hidden">
-                            <Bars className="w-5 h-5" />
-                        </Button>
+                        <button
+                            className="btn btn-ghost lg:hidden"
+                            onClick={() => setMobileOpen(!mobileOpen)}
+                        >
+                            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
 
-                        <ul
-                            tabIndex="-1"
-                            className="menu menu-sm dropdown-content   rounded-box z-1 mt-3 w-52 p-2">
-                            {/* Home, All Appointment, Dashboard */}
-                            <li>
-                                <Link href="/">
-                                    <Button variant="ghost">Home</Button>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/appointment">
-                                    <Button variant="ghost">All Appointment</Button>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/dashboard">
-                                    <Button variant="ghost">Dashboard</Button>
-                                </Link>
-                            </li>
-                        </ul>
+                        {mobileOpen && (
+                            <ul className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 bg-white shadow-lg border border-gray-100">
+                                {navLinks.map((link) => (
+                                    <li key={link.href}>
+                                        <Link
+                                            href={link.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            className="py-2 px-3 hover:bg-gray-50 rounded-lg"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     <Link href="/">
                         <Image
                             src="/logo.png"
-                            alt="Logo"
+                            alt="DocAppoint Logo"
                             width={150}
                             height={50}
                             className="object-contain"
+                            style={{ width: 'auto', height: 'auto' }}
                         />
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 gap-4 flex">
-                        {/* Home, All Appointment, Dashboard */}
-                        <li>
-                            <Link href="/">
-                                <Button variant="ghost">Home</Button>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/appointment">
-                                <Button variant="ghost">All Appointment</Button>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/dashboard">
-                                <Button variant="ghost">Dashboard</Button>
-                            </Link>
-                        </li>
+                    <ul className="menu menu-horizontal px-1 gap-2 flex">
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    className="btn btn-ghost text-base font-medium"
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <ul className="navbar-end gap-4 max-sm:gap-2">
                     {user ?
                         <>
                             <li>
-                                <Link href={"/profile"} >
-                                    <Avatar>
-                                        <Avatar.Image
-                                            referrerPolicy="no-referrer"
-                                            alt="John Doe" src={user?.image} />
-
-                                        <Avatar.Fallback>
-                                            {user.name.charAt(0)}
-                                        </Avatar.Fallback>
-                                    </Avatar>
+                                <Link href={"/dashboard/profile"}>
+                                    <div className="w-10 h-10 rounded-full border-2 border-blue-500 overflow-hidden bg-gray-100 flex items-center justify-center text-gray-500 font-bold">
+                                        {user?.image ? (
+                                            <img
+                                                referrerPolicy="no-referrer"
+                                                alt={user?.name || "User"}
+                                                src={user.image}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            user?.name?.charAt(0)?.toUpperCase() || "U"
+                                        )}
+                                    </div>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/"}>
-                                    <Button
-                                        onClick={handelSignOut}
-                                        variant="danger">Logout</Button>
-                                </Link>
+                                <button
+                                    onClick={handelSignOut}
+                                    className="btn btn-outline btn-error btn-sm md:btn-md"
+                                >
+                                    Logout
+                                </button>
                             </li>
                         </>
                         :
                         <>
                             <li>
-                                <Link href="/login"><Button variant="outline">Login</Button></Link>
+                                <Link href="/login">
+                                    <button className="btn btn-outline btn-primary btn-sm md:btn-md">Login</button>
+                                </Link>
                             </li>
                             <li>
-                                <Link href="/signup"><Button>Register</Button></Link>
+                                <Link href="/signup">
+                                    <button className="btn btn-primary btn-sm md:btn-md">Register</button>
+                                </Link>
                             </li>
-                        </>}
+                        </>
+                    }
                 </ul>
             </div>
-        </div >
+        </div>
     );
 };
 
