@@ -95,7 +95,7 @@ const HeroBanner = () => {
                             {/* Image container */}
                             <div className="relative w-full h-full rounded-[2rem] lg:rounded-[3rem] overflow-hidden border-[6px] lg:border-[12px] border-white shadow-inner">
                                 <Image 
-                                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop" 
+                                    src="https://i.ibb.co.com/B5NkGbSZ/hero.png" 
                                     alt="Professional Doctor" 
                                     fill
                                     sizes="(max-width: 1024px) 100vw, 480px"
