@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
     const resolvedParams = await params;
     let doctor = null;
     try {
-        const res = await fetch('http://localhost:8000/doctors');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors`);
         if (res.ok) {
             const allDoctors = await res.json();
             doctor = allDoctors.find(d => d._id === resolvedParams.id || d.id === resolvedParams.id);
