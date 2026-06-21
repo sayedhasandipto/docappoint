@@ -1,43 +1,135 @@
-# DocAppoint - Doctor Appointment Manager
+**Title:** DocAppoint - Your Appointment Management Solution
 
-A modern Doctor Appointment Booking System where users can browse available doctors, view details, and book appointments with ease.
-
-**Live Site:** [https://docappoint.vercel.app](https://docappoint.vercel.app)
+**Source:** [https://docappointbd.vercel.app/](https://docappointbd.vercel.app/)
 
 ---
 
-## ✨ Features
+# Page Structure Map
 
-- 🔐 **Secure Authentication** — Email/password and Google login powered by Better Auth with JWT sessions. Private routes are protected and persist on reload.
-- 🩺 **Browse & Book Doctors** — View a full list of doctors, filter by name, sort by fee or rating, and book appointments instantly from the doctor details page.
-- 📅 **Manage Your Bookings** — View, update, and delete your appointments from a personal dashboard with instant UI updates and toast notifications.
-- ⭐ **Review Doctors** — After your appointment, leave a star rating and written review for any doctor you have visited.
-- 👤 **Profile Management** — Update your display name and profile photo from the dashboard with instant UI refresh — no page reload needed.
-
----
-
-## 🛠️ Tech Stack
-
-**Client:** Next.js 16, Tailwind CSS, DaisyUI, Better Auth, react-hook-form, react-hot-toast, lucide-react, Swiper.js
-
-**Server:** Node.js, Express.js, MongoDB, Mongoose, Better Auth
-
----
-
-## 🚀 Getting Started
-
-### Client
-
-```bash
-cd docappoint
-npm install
-npm run dev
+```text
+DocAppoint - Your Appointment Management Solution
+└── Find & Book
+    ├── 50+
+    ├── 10k+
+    ├── 10k+
+    ├── 500+
+    ├── 50+
+    ├── 24/7
+    ├── Top Rated Doctors
+    ├── Our Core Values
+    │   ├── Compassion
+    │   ├── Excellence
+    │   ├── Integrity
+    │   ├── Respect
+    │   └── Teamwork
+    └── We Are a Team of
 ```
 
-### Server
+---
 
-```bash
-cd docappoint-server
-npm install
-node index.js
-```
+[](/)
+
+- Home
+- All Appointment
+- Dashboard
+
+- [](/login)
+- [](/signup)
+
+Your Health, Our Priority
+
+# Find & Book  
+
+The Best Doctors  
+Near You
+
+Get access to top-rated medical professionals. Book appointments easily, quickly, and securely from the comfort of your home.
+
+### 50+
+
+Specialist Doctors
+
+### 10k+
+
+Happy Patients
+
+Top Rated
+
+100% Verified
+
+Available in
+
+Dhaka City
+
+### 10k+
+
+Happy Patients
+
+### 500+
+
+Expert Doctors
+
+### 50+
+
+Specialties
+
+### 24/7
+
+Support Available
+
+OUR DOCTORS
+
+## Top Rated Doctors
+
+Book appointments with our most trusted and highly-rated medical professionals.
+
+[](/appointment)
+
+WHY CHOOSE US
+
+## Our Core Values
+
+The principles that guide everything we do in healthcare.
+
+### Compassion
+
+We create a welcoming and supportive environment that puts our patients at ease during their care journey.
+
+### Excellence
+
+We continuously improve our skills and resources to deliver the highest quality care possible.
+
+### Integrity
+
+We practice medicine with transparency and honesty, always putting our patients' interests first.
+
+### Respect
+
+We treat all individuals with dignity regardless of their background, beliefs, or circumstances.
+
+### Teamwork
+
+We work collaboratively with healthcare professionals to provide comprehensive care to patients.
+
+15+
+
+Years of  
+Excellence
+
+ABOUT US
+
+## We Are a Team of  
+
+Experienced Medical Professionals
+
+Dedicated to providing top-quality healthcare services. We believe in a holistic approach to healthcare that focuses on treating the whole person, not just the illness or symptoms.
+
+Holistic approach to healthcare
+
+Experienced medical professionals
+
+Patient-centered treatment plans
+
+Modern diagnostic equipment
+
+[](/appointment)
