@@ -9,7 +9,9 @@ export async function generateMetadata({ params }) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors`);
         if (res.ok) {
             const allDoctors = await res.json();
-            doctor = allDoctors.find(d => d._id === resolvedParams.id || d.id === resolvedParams.id);
+            if (Array.isArray(allDoctors)) {
+                doctor = allDoctors.find(d => d._id === resolvedParams.id || d.id === resolvedParams.id);
+            }
         }
     } catch (e) {
         console.error("Failed to fetch doctor for metadata", e);

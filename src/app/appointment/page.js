@@ -17,10 +17,19 @@ export default function AllAppointments() {
         const fetchDoctors = async () => {
             try {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors`);
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
                 const data = await res.json();
-                setDoctors(data);
+                if (Array.isArray(data)) {
+                    setDoctors(data);
+                } else {
+                    console.error("Data is not an array:", data);
+                    setDoctors([]);
+                }
             } catch (error) {
                 console.error("Failed to fetch doctors:", error);
+                setDoctors([]);
             } finally {
                 setIsLoading(false);
             }

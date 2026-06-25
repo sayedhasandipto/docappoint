@@ -18,10 +18,17 @@ export default function DoctorDetails() {
             if (params.id) {
                 try {
                     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors`);
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! status: ${res.status}`);
+                    }
                     const allDoctors = await res.json();
-                    const foundDoctor = allDoctors.find(d => d._id === params.id || d.id === params.id);
-                    if (foundDoctor) {
-                        setDoctor(foundDoctor);
+                    if (Array.isArray(allDoctors)) {
+                        const foundDoctor = allDoctors.find(d => d._id === params.id || d.id === params.id);
+                        if (foundDoctor) {
+                            setDoctor(foundDoctor);
+                        }
+                    } else {
+                        console.error("Data is not an array:", allDoctors);
                     }
                 } catch (error) {
                     console.error("Failed to fetch doctor details:", error);
