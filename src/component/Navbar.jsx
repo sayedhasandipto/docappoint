@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Button } from '@heroui/react';
 
 const Navbar = () => {
     const router = useRouter();
@@ -114,12 +115,12 @@ const Navbar = () => {
                         <>
                             <li>
                                 <Link href="/login">
-                                    <button className="btn btn-outline btn-primary btn-sm md:btn-md">Login</button>
+                                    <Button variant="outline" className="rounded-mdlogin">Login</Button>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/signup">
-                                    <button className="btn btn-primary btn-sm md:btn-md">Register</button>
+                                    <Button className="rounded-mdlogin">Regester</Button>
                                 </Link>
                             </li>
                         </>

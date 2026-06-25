@@ -6,6 +6,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Icon } from "@iconify/react";
 import { Mail, Lock, User, ImageIcon, Eye, EyeOff } from "lucide-react";
+import { Button } from "@heroui/react";
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -25,7 +26,7 @@ const SignUpPage = () => {
         e.preventDefault();
         setPasswordError("");
         setFormError("");
-        
+
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
 
@@ -167,14 +168,12 @@ const SignUpPage = () => {
                     <div className="flex-1 h-px bg-gray-200"></div>
                 </div>
 
-                <button
-                    type="button"
+                <Button
                     onClick={handleGoogleSign}
-                    className="w-full h-11 rounded-lg border-2 border-gray-200 text-gray-700 bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 transition-colors"
-                >
-                    <Icon icon="devicon:google" className="text-xl" />
-                    Sign up with Google
-                </button>
+                    className="w-full h-10" variant="tertiary">
+                    <Icon icon="devicon:google" />
+                    Sign in with Google
+                </Button>
             </form>
         </div>
     );
