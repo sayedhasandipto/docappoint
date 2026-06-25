@@ -77,7 +77,7 @@ export default function DoctorDetails() {
                                 <div>
                                     <h1 className="text-3xl font-bold text-gray-900 mb-2">{doctor.name}</h1>
                                     <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                                        {doctor.specialty}
+                                        {doctor.specialty || doctor.specialization}
                                     </span>
                                 </div>
                                 <div className="flex flex-col items-end">
@@ -85,7 +85,7 @@ export default function DoctorDetails() {
                                         <Star size={18} fill="currentColor" />
                                         <span>{doctor.rating}</span>
                                     </div>
-                                    <span className="text-xs text-gray-500 mt-1">{doctor.reviews} reviews</span>
+                                    <span className="text-xs text-gray-500 mt-1">{doctor.reviews || 0} reviews</span>
                                 </div>
                             </div>
 
@@ -98,14 +98,14 @@ export default function DoctorDetails() {
                                     <Briefcase className="w-6 h-6 text-blue-500 shrink-0" />
                                     <div>
                                         <h4 className="text-sm font-semibold text-gray-900">Experience</h4>
-                                        <p className="text-gray-600">{doctor.experience}</p>
+                                        <p className="text-gray-600">{doctor.experience} {doctor.experience ? 'years' : ''}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <Building2 className="w-6 h-6 text-blue-500 shrink-0" />
                                     <div>
                                         <h4 className="text-sm font-semibold text-gray-900">Hospital</h4>
-                                        <p className="text-gray-600">{doctor.hospital}</p>
+                                        <p className="text-gray-600">{doctor.hospital || "Not Specified"}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
@@ -120,7 +120,7 @@ export default function DoctorDetails() {
                                     <div>
                                         <h4 className="text-sm font-semibold text-gray-900">Availability</h4>
                                         <div className="text-gray-600 flex flex-col text-sm">
-                                            {doctor.availability.map((slot, i) => (
+                                            {(doctor.availability || ["10:00 AM - 05:00 PM"]).map((slot, i) => (
                                                 <span key={i}>{slot}</span>
                                             ))}
                                         </div>
