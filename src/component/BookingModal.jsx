@@ -127,7 +127,7 @@ export default function BookingModal({ isOpen, onOpenChange, doctor }) {
                                 {...register("appointmentTime", { required: "Time is required" })}
                             >
                                 <option value="">Select a time slot</option>
-                                {doctor?.availability?.map((slot, index) => (
+                                {(doctor?.availability?.length > 0 ? doctor.availability : ["10:00 AM", "11:30 AM", "02:00 PM", "04:30 PM", "07:00 PM"]).map((slot, index) => (
                                     <option key={slot} value={slot}>{slot}</option>
                                 ))}
                             </select>
