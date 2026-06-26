@@ -90,11 +90,13 @@ const Navbar = () => {
                                 <Link href={"/dashboard/profile"}>
                                     <div className="w-10 h-10 rounded-full border-2 border-blue-500 overflow-hidden bg-gray-100 flex items-center justify-center text-gray-500 font-bold">
                                         {user?.image ? (
-                                            <img
+                                            <Image
                                                 referrerPolicy="no-referrer"
                                                 alt={user?.name || "User"}
                                                 src={user.image}
                                                 className="w-full h-full object-cover"
+                                                width={40}
+                                                height={40}
                                             />
                                         ) : (
                                             user?.name?.charAt(0)?.toUpperCase() || "U"

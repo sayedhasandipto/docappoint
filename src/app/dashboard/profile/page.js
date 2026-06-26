@@ -4,11 +4,12 @@ import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { User, Mail, Link as LinkIcon, Edit, X } from "lucide-react";
+import Image from "next/image";
 
 export default function MyProfile() {
     const { data: session } = authClient.useSession();
     const user = session?.user;
-    
+
     const [localUser, setLocalUser] = useState(user);
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, reset } = useForm();
@@ -34,13 +35,13 @@ export default function MyProfile() {
         setIsUpdating(true);
         try {
             await new Promise(resolve => setTimeout(resolve, 800));
-            
+
             setLocalUser({
                 ...localUser,
                 name: data.name,
                 image: data.image
             });
-            
+
             toast.success("Profile updated successfully!");
             setIsOpen(false);
         } catch (error) {
@@ -69,17 +70,19 @@ export default function MyProfile() {
                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <div className="w-32 h-32 shrink-0 rounded-full border-4 border-blue-500 overflow-hidden shadow-sm bg-gray-100 flex items-center justify-center text-4xl font-bold text-gray-400">
                         {localUser?.image ? (
-                            <img 
-                                src={localUser.image} 
-                                alt={localUser?.name || "User Avatar"} 
+                            <Image
+                                src={localUser.image}
+                                alt={localUser?.name || "User Avatar"}
                                 className="w-full h-full object-cover"
                                 referrerPolicy="no-referrer"
+                                width={128}
+                                height={128}
                             />
                         ) : (
                             localUser?.name?.charAt(0)?.toUpperCase() || <User size={48} />
                         )}
                     </div>
-                    
+
                     <div className="flex-1 w-full space-y-6">
                         <div>
                             <p className="text-sm font-medium text-gray-500 mb-1 flex items-center gap-2">
@@ -89,7 +92,7 @@ export default function MyProfile() {
                                 {localUser?.name}
                             </p>
                         </div>
-                        
+
                         <div>
                             <p className="text-sm font-medium text-gray-500 mb-1 flex items-center gap-2">
                                 <Mail size={16} /> Email Address

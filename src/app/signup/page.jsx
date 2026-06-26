@@ -52,7 +52,7 @@ const SignUpPage = () => {
             toast.error("Registration failed!");
         } else {
             toast.success("Account created successfully!");
-            router.push('/login');
+            router.push('/');
         }
     };
 
