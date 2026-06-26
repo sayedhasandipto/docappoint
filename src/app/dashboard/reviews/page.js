@@ -19,14 +19,14 @@ export default function MyReviews() {
             if (session?.user?.email) {
                 try {
                     // Fetch bookings
-                    const resBookings = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments?email=${session.user.email}`);
+                    const resBookings = await fetch(`/api/appointments?email=${session.user.email}`);
                     const dataBookings = await resBookings.json();
                     if (dataBookings.success) {
                         setMyBookings(dataBookings.data);
                     }
                     
                     // Fetch reviews
-                    const resReviews = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews?email=${session.user.email}`);
+                    const resReviews = await fetch(`/api/reviews?email=${session.user.email}`);
                     const dataReviews = await resReviews.json();
                     if (dataReviews.success) {
                         setMyReviews(dataReviews.data);
@@ -64,7 +64,7 @@ export default function MyReviews() {
                 comment: comment.trim(),
             };
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
+            const response = await fetch(`/api/reviews`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

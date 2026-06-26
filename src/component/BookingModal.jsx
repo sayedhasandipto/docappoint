@@ -29,7 +29,7 @@ export default function BookingModal({ isOpen, onOpenChange, doctor }) {
                 appointmentTime: data.appointmentTime,
             };
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments`, {
+            const response = await fetch(`/api/appointments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

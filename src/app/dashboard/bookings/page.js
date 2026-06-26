@@ -18,7 +18,7 @@ export default function MyBookings() {
         const fetchBookings = async () => {
             if (session?.user?.email) {
                 try {
-                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments?email=${session.user.email}`);
+                    const res = await fetch(`/api/appointments?email=${session.user.email}`);
                     const data = await res.json();
                     if (data.success) {
                         setBookings(data.data);
@@ -37,7 +37,7 @@ export default function MyBookings() {
 
     const confirmDeleteAction = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments/${confirmDelete}`, {
+            const res = await fetch(`/api/appointments/${confirmDelete}`, {
                 method: 'DELETE',
             });
             const data = await res.json();
@@ -72,7 +72,7 @@ export default function MyBookings() {
     const onSubmitUpdate = async (data) => {
         setIsUpdating(true);
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments/${selectedBooking._id}`, {
+            const res = await fetch(`/api/appointments/${selectedBooking._id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

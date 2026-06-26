@@ -14,7 +14,7 @@ const TopRatedDoctor = () => {
     React.useEffect(() => {
         const fetchDoctors = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors`);
+                const res = await fetch(`/api/doctors`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
                 }
