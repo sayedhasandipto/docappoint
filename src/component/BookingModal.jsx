@@ -35,6 +35,7 @@ export default function BookingModal({ isOpen, onOpenChange, doctor }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(bookingData),
+                credentials: 'include',
             });
 
             const result = await response.json();

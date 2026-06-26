@@ -11,6 +11,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://docappoint-server-three.vercel.app/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
